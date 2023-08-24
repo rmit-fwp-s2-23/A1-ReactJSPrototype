@@ -1,8 +1,16 @@
+import React from 'react';
+import Header from './header/Header.js';
+import Navbar from './navbar/Navbar.js';
+import MainContent from './main-content/Main-Content.js';
 
 function App() {
   return (
     <div>
-      <h1>Loop Cinemas</h1>
+      <Header />
+      <Navbar />
+      <div className="wrapper">
+        <MainContent />
+      </div>
     </div>
   );
 }
