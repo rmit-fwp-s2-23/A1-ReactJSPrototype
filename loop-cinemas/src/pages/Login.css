@@ -1,0 +1,38 @@
+.title {
+    background: red;
+    padding: 20px;
+    margin-top: 0px;
+    text-align: center;
+  
+  }
+  
+  .details {
+    padding: 40px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: x-large;
+  }
+  
+  input {
+    margin: 10px 0px 0px 0px;
+    width: 270px;
+    height: 60px;
+    font-size: x-large;
+    border-radius: 20px;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #e77e7e;
+    margin: 0px 600px 300px 600px;
+    height: 500px;
+  }
+  
+  .login-btn {
+    margin: 40px;
+    border-radius: 20px;
+    font-size: x-large;
+  }
