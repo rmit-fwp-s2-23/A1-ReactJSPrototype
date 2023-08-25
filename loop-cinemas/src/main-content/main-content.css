@@ -1,3 +1,11 @@
 .wrapper {
-    
+    background: #1C031F;
+    display: flex;
+    justify-content: center;
+}
+
+.main-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
