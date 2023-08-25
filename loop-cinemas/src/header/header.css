@@ -1,6 +1,14 @@
 .header {
    background: #3D0841;
-   padding: 20px;
+   padding: 10px 0px 0px 10px;
    text-align: left;
    color: #cccbcb;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+
+.header img {
+   width: 50px;
+   margin-right: 10px;
 }
