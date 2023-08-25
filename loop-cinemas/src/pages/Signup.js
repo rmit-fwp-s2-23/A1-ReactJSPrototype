@@ -7,7 +7,7 @@ import "./App.css";
 
 
 function App() {
-    const [firstName, setFirstName] = useState('')
+    const [name, setName] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -19,7 +19,7 @@ function App() {
 
         <Form.Group className="details">
           <Form.Label className="label">Name</Form.Label>
-          <Form.Control onChange={(blank) => {setFirstName(blank.target.value)}} type="text" name="FirstName" placeholder="Enter Name"/>
+          <Form.Control onChange={(blank) => {setName(blank.target.value)}} type="text" name="Name" placeholder="Enter Name"/>
          </Form.Group>
         
          <Form.Group className="details">
