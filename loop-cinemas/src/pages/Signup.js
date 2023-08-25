@@ -13,7 +13,7 @@ function App() {
 
     return (
         <>
-      <h2 className="title">Sign Up Page</h2>
+      <h2 className="sg">Sign Up Page</h2>
       <form className="container">
         <div className="form-container">
 

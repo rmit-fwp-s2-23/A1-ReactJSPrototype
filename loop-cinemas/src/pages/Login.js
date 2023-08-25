@@ -9,7 +9,7 @@ function Login () {
 
     return (
         <>
-      <h2 className="lg">Login Page</h2>
+      <h2 className="title">Login Page</h2>
       <form className="container">
         <div className="form-container">
          <Form.Group className="details">
