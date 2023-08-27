@@ -1,43 +1,44 @@
-import { Alert } from 'react-bootstrap';
-import { redirect } from 'react-router-dom';
+import { Alert, redirect } from 'react-bootstrap';
 import React, { useState } from 'react';
 import App from '../App';
 import './Login.css';
-import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
-import ImageLogo from "../images-icons/film.png";
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import ImageLogo from '../images/loop-logo.png';
 
 function Login() {
 
 const[emaillogin, setEmaillogin] = useState('');
 const[passlogin, setPasslogin] = useState('');
 const[errMsg, setErrMsg] = useState(false);
-//const[home, setHome] = useState(true);
 const [goHome, setGoHome] = useState(false);
+const navigate = useNavigate();
 
 
 function handleLogin(e) {
     e.preventDefault();
-    let userEmail = localStorage.getItem("Email");
-    let userPass = localStorage.getItem("Password");
-    
-    let user = userEmail ? userEmail.replace(/"/g,"") : "";
-    let pass = userPass ? userPass.replace(/"/g,"") : "";
+    let users = JSON.parse(localStorage.getItem("users")) || {};
+    let user = users[emaillogin];
 
     if(!emaillogin || !passlogin) {
         setErrMsg(true);
-        console.log("Empty")
-    }else if (passlogin !== pass || emaillogin!== user) {
-        setErrMsg(true)
+        console.log("Empty fields");
+    }else if (!user || passlogin !== user.password) {
+        setErrMsg(true);
+        console.log("Incorrect Log In Details");
     }else {
-        //setHome(!home);
         setErrMsg(false);
+        localStorage.setItem("loggedInEmail", JSON.stringify(emaillogin));
         setGoHome(true);
     }
 }
+    
+
+
 
 if (goHome) {
     return <Redirect to="/" />;
   }
+
 
 
     return (

@@ -6,47 +6,56 @@ import ImageLogo from "../images-icons/film.png";
 import { Link } from 'react-router-dom';
 
 function Signup() {
-
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [errMsg, setErrMsg] = useState(false);
-    const [login, setLogin] = useState(true);
-    const [message, setMessage] = useState('')
-
-    function validEmail(email) {
-        const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailCheck.test(email);
-    }
-
-    function validPass(password) {
-        const passCheck = /^(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-        return passCheck.test(password);
-    }
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errMsg, setErrMsg] = useState(false);
+  const [login, setLogin] = useState(true);
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
 
+  function validEmail(email) {
+    const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailCheck.test(email);
+  }
 
-function handleSubmit(e) {
+  function validPass(password) {
+    const passCheck = /^(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    return passCheck.test(password);
+  }
+
+
+
+  function handleSubmit(e) {
     e.preventDefault();
-    if(!name || !email || !password) {
+    if (!name || !email || !password) {
         setErrMsg(true);
     } else if (!validEmail(email)) {
         setErrMsg(false);
-        setMessage("Invalid Email, try again")
-
-    } else if (!validPass) {
+        setMessage("Invalid Email, try again");
+    } else if (!validPass(password)) {
         setErrMsg(false);
-        setMessage("Invalid password, try again")
-
+        setMessage("Invalid password, try again");
     } else {
         setErrMsg(false);
-        localStorage.setItem("Name", (name));
-        localStorage.setItem("Email", JSON.stringify(email));
-        localStorage.setItem("Password", JSON.stringify(password));
+        
+let users = JSON.parse(localStorage.getItem("users")) || {};
+        
+        users[email] = {
+            name: name,
+            email: email,
+            password: password,
+            joinDate: new Date()
+        };
+        
+        localStorage.setItem("users", JSON.stringify(users));
+        localStorage.setItem("loggedInEmail", email);
+        localStorage.setItem("loggedInEmail", JSON.stringify(email));
+        
         setLogin(!Login);
-        setMessage("Success")
+        navigate("/Home");
     }
-
 }
 
 
