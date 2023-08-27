@@ -1,0 +1,10 @@
+.sidebar {
+    background-color: #29062b;
+    height: 100vh;
+}
+
+.profileBoxStyle {
+    padding: 20px;
+    width: 300px;
+    margin: 20px auto;
+}

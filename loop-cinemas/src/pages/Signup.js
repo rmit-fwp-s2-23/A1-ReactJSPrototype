@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Login from './Login';
 import './Login.css';
 import ImageLogo from "../images-icons/film.png";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 
 function Signup() {
   const [name, setName] = useState("");
@@ -54,7 +54,7 @@ let users = JSON.parse(localStorage.getItem("users")) || {};
         localStorage.setItem("loggedInEmail", JSON.stringify(email));
         
         setLogin(!Login);
-        navigate("/Home");
+        navigate("/");
     }
 }
 

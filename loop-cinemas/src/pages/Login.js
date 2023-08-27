@@ -1,9 +1,10 @@
-import { Alert, redirect } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import React, { useState } from 'react';
 import App from '../App';
 import './Login.css';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
-import ImageLogo from '../images/loop-logo.png';
+import { redirect } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import ImageLogo from "../images-icons/film.png";
 
 function Login() {
 
@@ -32,11 +33,8 @@ function handleLogin(e) {
     }
 }
     
-
-
-
 if (goHome) {
-    return <Redirect to="/" />;
+    navigate("/");
   }
 
 
