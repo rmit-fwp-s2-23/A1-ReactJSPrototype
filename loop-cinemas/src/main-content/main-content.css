@@ -1,11 +1,10 @@
 .wrapper {
     background: #1C031F;
-    display: flex;
-    justify-content: center;
 }
 
 .main-content {
-    padding: 20px;
+    padding-left: 0;
+    padding-right: 0;
     display: flex;
     flex-direction: column;
 }
