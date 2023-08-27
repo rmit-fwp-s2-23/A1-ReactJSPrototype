@@ -2,6 +2,8 @@ import { Alert } from 'react-bootstrap';
 import React, { useState } from 'react'
 import Login from './Login';
 import './Login.css';
+import ImageLogo from "../images-icons/film.png";
+import { Link } from 'react-router-dom';
 
 function Signup() {
 
@@ -53,51 +55,56 @@ function handleSubmit(e) {
     return(
         <div>
 
-
        {login ? (           
             <form onSubmit={handleSubmit}>
-                <h1>Sign Up</h1>
                 <div className='container'>
-                <div className='form-container'>
-                <div className='form-group'>
-                    <label>Name</label>
-                    <input type='text' className='form-control' placeholder='Enter name' onChange={(event)=> setName(event.target.value)}/>
+                    <div className='form-header'>
+                        <div className='form-title'>
+                            <img src={ImageLogo} />
+                            <h1>Loop Rewards</h1>
+                        </div>
+                        <div>
+                            <h3>Already a member? <Link to="/login">Log in</Link></h3>
+                        </div>
+                    </div>
+                    <div className='form-container'>
+                        <div className='form-group'>
+                            <label>Name</label>
+                            <input type='text' className='form-control' placeholder='Enter name' onChange={(event)=> setName(event.target.value)}/>
 
+                        </div>
+
+                        <div className='form-group'>
+                            <label>Email</label>
+                            <input type='text' className='form-control' placeholder='Enter email' onChange={(event)=> setEmail(event.target.value)}/>
+
+                        </div>
+
+                        <div className='form-group'>
+                            <label>Password</label>
+                            <input type='password' className='form-control' placeholder='Enter password' onChange={(event)=> setPassword(event.target.value)}/>
+
+                        </div>
+                        <button type='submit' className='submit-btn'>Sign Up</button>
+
+                    {errMsg && (
+                        <Alert color="danger" className='info'>
+                            Please fill in all fields
+                        </Alert>
+                    )}
+                    {message && (
+                        <Alert color='danger'>
+                            {message}
+                        </Alert>
+                    )}
+                    </div>
                 </div>
-
-                <div className='form-group'>
-                    <label>Email</label>
-                    <input type='text' className='form-control' placeholder='Enter email' onChange={(event)=> setEmail(event.target.value)}/>
-
-                </div>
-
-                <div className='form-group'>
-                    <label>Password</label>
-                    <input type='password' className='form-control' placeholder='Enter password' onChange={(event)=> setPassword(event.target.value)}/>
-
-                </div>
-                <button type='submit' className='submit-btn'>Sign Up</button>
-
-            {errMsg && (
-                <Alert color="danger" className='info'>
-                    Please fill in all fields
-                </Alert>
-            )}
-            {message && (
-                <Alert color='danger'>
-                    {message}
-                </Alert>
-            )}
-            </div>
-
-            </div>
             </form>
 
-            ):(
-            <Login></Login>
-            )}
-
-
+                ):(
+                <Login></Login>
+                )
+        }
         </div>
     )
 }

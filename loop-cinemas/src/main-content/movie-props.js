@@ -50,6 +50,13 @@ const MovieList = () => {
             Director: "Danny Philippou and Michael Philippou",
             Poster: "https://dvvy6louqcr7j.cloudfront.net/vista/HO00014346/heroPoster/Talk-to-Me.png",
             SessionTimes: ["5:30pm", "7:30pm", "9:30pm"]
+        },
+        {
+            Title: "Meg 2: The Trench",
+            Year: "2023",
+            Director: "Ben Wheatley",
+            Poster: "https://m.media-amazon.com/images/M/MV5BMTM2NTU1ZTktNjc4YS00NjNhLWE4NmYtOTM2YjFjOGUzNmYzXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_FMjpg_UX1000_.jpg",
+            SessionTimes: ["12:30pm", "2:30pm", "4:30pm", "6:30pm", "8:30pm"]
         }
     ]);
     return (<MovieProps movies={movies} />)
