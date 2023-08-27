@@ -1,30 +1,71 @@
-import React, { useState } from "react";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import "./Login.css";
+import { Alert } from 'react-bootstrap';
+import { redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import App from '../App';
+import Home from './Home';
+import './Login.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function Login () {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+function Login() {
+
+const[emaillogin, setEmaillogin] = useState('');
+const[passlogin, setPasslogin] = useState('');
+const[errMsg, setErrMsg] = useState(false);
+//const[home, setHome] = useState(true);
+const [goHome, setGoHome] = useState(false);
+
+
+function handleLogin(e) {
+    e.preventDefault();
+    let user = localStorage.getItem("Email").replace(/"/g,"");
+    let pass = localStorage.getItem("Password").replace(/"/g,"");
+
+    if(!emaillogin || !passlogin) {
+        setErrMsg(true);
+        console.log("Empty")
+    }else if (passlogin !== pass || emaillogin!== user) {
+        setErrMsg(true)
+    }else {
+        //setHome(!home);
+        setErrMsg(false);
+        setGoHome(true);
+    }
+}
+
+if (goHome) {
+    return <redirect to="/" />;
+  }
+
 
     return (
-        <>
-      <h2 className="title">Login Page</h2>
-      <form className="container">
-        <div className="form-container">
-         <Form.Group className="details">
-          <Form.Label className="label">Email</Form.Label>
-          <Form.Control onChange={(blank) => {setUsername(blank.target.value)}} type="text" name="Email" placeholder="Enter Email"/>
-         </Form.Group>
+        <div>
+            <h1>Login</h1>
 
-         <Form.Group className="details">
-          <Form.Label className="label">Password</Form.Label>
-          <Form.Control onChange={(blank) => {setPassword(blank.target.value)}} type="text" name="Password" placeholder="Enter Password"/>
-         </Form.Group>
-         <input type="submit" className="login-btn" value="Login" />
+
+            <form onSubmit={handleLogin}>
+                <div className='container'>
+                <div className='form-container'>
+                    <div className='form-group'>
+                        <label>Email</label>
+                        <input type='text' className='form-control' placeholder='Enter email' onChange={(event)=> setEmaillogin(event.target.value)}/>
+
+                    </div>
+
+                    <div className='form-group'>
+                        <label>Password</label>
+                        <input type='password' className='form-control' placeholder='Enter password' onChange={(event)=> setPasslogin(event.target.value)}/>
+
+                    </div>
+                    <button type='submit' className='submit-btn'>Log In</button>
+                    {errMsg && (
+                    <Alert color="primary" variant='danger' className='info'>
+                        Incorrect Log In Details
+                    </Alert>
+                    )}
+                </div>
+                </div>
+            </form>
         </div>
-      </form>
-    </>
     );
 }
 
