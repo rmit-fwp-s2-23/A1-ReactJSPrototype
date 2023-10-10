@@ -1,9 +1,7 @@
-import { Alert } from 'react-bootstrap';
+import Alert from 'react-bootstrap/Alert';
 import React, { useState } from 'react';
-import App from '../App';
 import './Login.css';
-import { redirect } from 'react-router-dom';
-import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ImageLogo from "../images-icons/film.png";
 
 function Login() {
